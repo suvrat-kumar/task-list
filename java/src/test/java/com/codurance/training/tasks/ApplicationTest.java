@@ -58,12 +58,14 @@ public final class ApplicationTest {
         execute("add project secrets");
         execute("add task secrets Eat more donuts.");
         execute("add task secrets Destroy all humans.");
+        execute("add task secrets Destroy all humans. ID ABC123");
 
         execute("show");
         readLines(
             "secrets",
             "    [ ] 1: Eat more donuts.",
             "    [ ] 2: Destroy all humans.",
+            "    [ ]  ABC123:  Destroy all humans. " ,
             ""
         );
 
