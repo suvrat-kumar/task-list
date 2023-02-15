@@ -1,6 +1,13 @@
-package com.codurance.training.tasks;
+package com.codurance.training.tasks.utils;
+
+import java.text.SimpleDateFormat;
 
 public class Utils {
+
+    public static final SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+
+    public static Long lastId = 1l;
+
     public static boolean isAlphaNumeric(String s){
         String alphanumeric= "^[a-zA-Z0-9]*$";
         String alpha= "^[a-zA-Z]*$";
@@ -11,4 +18,5 @@ public class Utils {
     public static Long nextId(Long lastId) {
         return ++lastId;
     }
+
 }

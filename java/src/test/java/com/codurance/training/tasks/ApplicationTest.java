@@ -27,7 +27,7 @@ public final class ApplicationTest {
     public ApplicationTest() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(new PipedInputStream(inStream)));
         PrintWriter out = new PrintWriter(new PipedOutputStream(outStream), true);
-        TaskList taskList = new TaskList(in, out);
+        TaskRunner taskList = new TaskRunner(in);
         applicationThread = new Thread(taskList);
     }
 
@@ -62,11 +62,11 @@ public final class ApplicationTest {
 
         execute("show");
         readLines(
-            "secrets",
-            "    [ ] 1: Eat more donuts.",
-            "    [ ] 2: Destroy all humans.",
-            "    [ ]  ABC123:  Destroy all humans. " ,
-            ""
+            """
+                   secrets
+                   [ ] 1:  Eat more donuts.
+                   [ ] 2:  Destroy all humans.
+                   [ ]  ABC123:  Destroy all humans"""
         );
 
         execute("add project training");
