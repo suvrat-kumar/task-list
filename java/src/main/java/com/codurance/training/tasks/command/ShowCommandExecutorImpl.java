@@ -5,7 +5,7 @@ import com.codurance.training.tasks.service.TaskService;
 
 public class ShowCommandExecutorImpl implements ShowCommandExecutor{
 
-    private TaskPrintService taskPrintService;
+    private final TaskPrintService taskPrintService;
 
     public ShowCommandExecutorImpl(TaskPrintService taskPrintService){
         this.taskPrintService = taskPrintService;

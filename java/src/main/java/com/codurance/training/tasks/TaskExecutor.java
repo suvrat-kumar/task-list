@@ -1,27 +1,36 @@
 package com.codurance.training.tasks;
 
 import com.codurance.training.tasks.command.*;
-import com.codurance.training.tasks.db.TaskDb;
-import com.codurance.training.tasks.model.Task;
 import com.codurance.training.tasks.service.*;
 
-import java.util.List;
-import java.util.Map;
-
 public class TaskExecutor {
+    private final HelperPrintService helperPrintService;
+    private final ProjectService projectService;
+    private final TaskService taskService;
+    private final TaskPrintService taskPrintService;
 
-    public static void execute(String commandLine) {
-        PrintService printService = new PrintServiceImpl();
-        ProjectService projectService = new ProjectServiceImpl();
-        TaskService taskService = new TaskServiceImpl();
-        TaskPrintService taskPrintService = new TaskPrintServiceImpl();
+    private final CommandExecutor commandExecutor;
+    private final AddCommandExecutor addCommandExecutor;
+    private final CheckCommandExecutor checkCommandExecutor;
+    private final TodayCommandExecutor todayCommandExecutor;
+    private final ShowCommandExecutor showCommandExecutor;
+    private final DeadlineCommandExecutor deadlineCommandExecutor;
 
-        CommandExecutor commandExecutor = new CommandExecutorImpl(printService);
-        AddCommandExecutor addCommandExecutor = new AddCommandExecutorImpl(taskService, projectService);
-        CheckCommandExecutor checkCommandExecutor = new CheckCommandExecutorImpl(taskService);
-        TodayCommandExecutor todayCommandExecutor = new TodayCommandExecutorImpl(taskPrintService);
-        ShowCommandExecutor showCommandExecutor = new ShowCommandExecutorImpl(taskPrintService);
-        DeadlineCommandExecutor deadlineCommandExecutor = new DeadlineCommandExecutorImpl(taskService);
+    public TaskExecutor(){
+        helperPrintService = new HelperPrintServiceImpl();
+        projectService = new ProjectServiceImpl();
+        taskService = new TaskServiceImpl();
+        taskPrintService = new TaskPrintServiceImpl();
+
+        commandExecutor = new CommandExecutorImpl(helperPrintService);
+        addCommandExecutor = new AddCommandExecutorImpl(taskService, projectService);
+        checkCommandExecutor = new CheckCommandExecutorImpl(taskService);
+        todayCommandExecutor = new TodayCommandExecutorImpl(taskPrintService);
+        showCommandExecutor = new ShowCommandExecutorImpl(taskPrintService);
+        deadlineCommandExecutor = new DeadlineCommandExecutorImpl(taskService);
+    }
+
+    public void execute(String commandLine) {
 
         String[] commandRest = commandLine.split(" ", 2);
         String command = commandRest[0];

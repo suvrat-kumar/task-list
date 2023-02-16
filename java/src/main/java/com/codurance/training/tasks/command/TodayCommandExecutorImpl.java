@@ -3,7 +3,7 @@ package com.codurance.training.tasks.command;
 import com.codurance.training.tasks.service.TaskPrintService;
 
 public class TodayCommandExecutorImpl implements TodayCommandExecutor{
-    private TaskPrintService taskPrintService;
+    private final TaskPrintService taskPrintService;
     public TodayCommandExecutorImpl(TaskPrintService taskPrintService){
         this.taskPrintService = taskPrintService;
     }

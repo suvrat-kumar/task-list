@@ -3,7 +3,7 @@ package com.codurance.training.tasks.command;
 import com.codurance.training.tasks.service.TaskService;
 
 public class DeadlineCommandExecutorImpl implements DeadlineCommandExecutor{
-    private TaskService taskService;
+    private final TaskService taskService;
     public DeadlineCommandExecutorImpl(TaskService taskService){
         this.taskService = taskService;
     }

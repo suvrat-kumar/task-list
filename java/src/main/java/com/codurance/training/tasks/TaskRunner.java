@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static com.codurance.training.tasks.TaskExecutor.execute;
 import static java.lang.System.out;
 
 public class TaskRunner  implements Runnable {
@@ -13,8 +12,11 @@ public class TaskRunner  implements Runnable {
 
     private static final String QUIT = "quit";
 
+    private final TaskExecutor taskExecutor;
+
     public TaskRunner(BufferedReader reader) {
         this.in = reader;
+        taskExecutor = new TaskExecutor();
     }
 
     public void run() {
@@ -30,7 +32,7 @@ public class TaskRunner  implements Runnable {
             if (command.equals(QUIT)) {
                 break;
             }
-            execute(command);
+            taskExecutor.execute(command);
         }
     }
 }

@@ -3,7 +3,7 @@ package com.codurance.training.tasks.command;
 import com.codurance.training.tasks.service.TaskService;
 
 public class CheckCommandExecutorImpl  implements CheckCommandExecutor{
-    private TaskService taskService;
+    private final TaskService taskService;
 
     public CheckCommandExecutorImpl(TaskService taskService){
         this.taskService = taskService;

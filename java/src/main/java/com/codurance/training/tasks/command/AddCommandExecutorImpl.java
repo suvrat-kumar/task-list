@@ -6,8 +6,8 @@ import com.codurance.training.tasks.utils.Utils;
 
 public class AddCommandExecutorImpl implements AddCommandExecutor{
 
-    private TaskService taskService;
-    private ProjectService projectService;
+    private final TaskService taskService;
+    private final ProjectService projectService;
 
     public AddCommandExecutorImpl(TaskService taskService, ProjectService projectService){
         this.projectService=projectService;
